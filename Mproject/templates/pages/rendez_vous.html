@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Prendre Rendez-Vous</title>
+</head>
+<body>
+    <main class="container py-5">
+        <div class="container py-5">
+            <h2 class="text-center">Prendre Rendez-Vous</h2>
+            <form class="p-4" method="POST">
+                {% csrf_token %}
+                <div class="mb-3 row">
+                    <div class="col">
+                        <label for="nomdepatient" class="form-label fw-semibold">Nom du patient</label>
+                        <input type="text" class="form-control" id="nomdepatient" name="nom" value="{{ patient.nom }}" readonly>
+                    </div>
+                    <div class="col">
+                        <label for="prenomdepatient" class="form-label fw-semibold">Prénom du patient</label>
+                        <input type="text" class="form-control" id="prenomdepatient" name="prenom" value="{{ patient.prenom }}" readonly>
+                    </div>
+                    <div class="col">
+                        <label for="email" class="form-label fw-semibold">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" value="{{ patient.email }}" readonly>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <div class="col">
+                        <label for="numf" class="form-label fw-semibold">Numéro de téléphone</label>
+                        <input type="text" class="form-control" id="numf" name="telephone" value="{{patient.telephone}}" readonly>
+                    </div>
+                    <div class="col">
+                        <label for="Symps" class="form-label fw-semibold">Symptômes</label>
+                        <input type="text" class="form-control" id="Symps" name="symptome">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <div class="col">
+                        <label for="date" class="form-label fw-semibold">Choisir une date</label>
+                       {{form.dateHeure}}
+                    </div>
+                    <div class="mb-3 row">
+                        <div class="col">
+                            <button class="btn btn-info text-white w-100" type="submit">Réserver maintenant</button>
+                        </div>
+                        <div class="col">
+                            <a href="{% url 'patient' patient.id %}" class="btn btn-secondary w-100">Annuler</a>
+                        </div>
+            </form>
+        </div>
+    </main>
+    <footer class="p-5 bg-body-secondary">
+        <div class="row d-flex justify-content-center align-items-center text-center">
+            <div class="col">
+                <h3>Horaires d'ouvertures</h3>
+                <hr>
+                <span>Dimanche : <span class="fw-semibold ps-4">Fermé</span></span>
+                <hr>
+                <span>Lundi, mardi - vendredi <span class="fw-semibold ps-4">de 9h00 à 17h30</span></span>
+                <hr>
+                <span>Samedi <span class="fw-semibold ps-4">10h30 - 17h00</span></span>
+            </div>
+            <div class="col">
+                <h3>Notre Clinique</h3>
+                <div class="d-flex justify-content-center flex-column">
+                    <a href="mailto:clinique@live.com" class="my-4">clinique@live.com</a>
+                    <span>123 rue des arts, CasaBlanca, CODE 203244</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <footer class="bg-dark text-white p-3">
+        <div class="d-flex justify-content-around align-items-center">
+            <div>
+                <p class="p-0 m-0">Designed by Souhail Naji</p>
+            </div>
+            <div>
+                <p class="p-0 m-0">© Copyright 2045 | All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

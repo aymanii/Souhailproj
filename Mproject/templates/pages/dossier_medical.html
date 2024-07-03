@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Dossier Médical de Saida Brahim</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-white py-3 px-4">
+        <div class="">
+          <a class="navbar-brand" href="#">
+            <img class="w-25" src="{% static 'images/logo.png' %}" alt="Logo">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">À propos de nous</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Traitement</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Médecins</a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Déconnexion</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main class="container py-5">
+        <h2 class="text-center">Dossier Médical de brahim saida</h2>
+        <div class="mt-4">
+            <h4>Traitements en Cours</h4>
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <textarea class="form-control" id="traitementsEnCours" name="traitementsEnCours" rows="10">{{ traitementsEnCours }}</textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+            </form>
+        </div>
+    </main>
+    <footer class="p-5 bg-body-secondary">
+        <div class="row d-flex justify-content-center align-items-center text-center">
+            <div class="col">
+                <h3>Horaires d'ouvertures</h3>
+                <hr>
+                <span>Dimanche : <span class="fw-semibold ps-4">Fermé</span></span>
+                <hr>
+                <span>Lundi, mardi - vendredi <span class="fw-semibold ps-4">de 9h00 à 17h30</span></span>
+                <hr>
+                <span>Samedi <span class="fw-semibold ps-4">10h30 - 17h00</span></span>
+            </div>
+            <div class="col">
+                <h3>Notre Clinique</h3>
+                <div class="

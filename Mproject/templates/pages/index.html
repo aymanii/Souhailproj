@@ -1,0 +1,114 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+{% block title %}Accueil{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col d-flex justify-content-center flex-column">
+        <p class="fs-4 text-dark-emphasis">Optimisez la gestion quotidienne de votre cabinet médical avec notre
+            application intuitive et efficace. Que ce soit pour prendre des
+            rendez-vous, consulter les dossiers patients ou générer des prescriptions,
+            tout est à portée de main. Simplifiez votre travail et concentrez-vous sur
+            l'essentiel : le soin de vos patients.</p>
+        <div>
+            <a href="#" class="btn btn-primary">Contactez-nous</a>
+            <a href="#" class="btn btn-primary">À propos de nous</a>
+        </div>
+    </div>
+    <div class="col">
+        <img class="img-fluid" src="{% static 'images/medicine-and-healthcare.jpg' %}" alt="Medicine and Healthcare">
+    </div>
+</div>
+<section class="container py-5">
+    <div class="shadow-lg rounded-3">
+        <h2 class="px-4 pt-5">PRENDRE <span class="text-info">RENDEZ-VOUS</span></h2>
+        <form class="p-4">
+            <div class="mb-3 row">
+                <div class="col">
+                    <label for="nomdepatient" class="form-label fw-semibold">Nom du patient</label>
+                    <input type="text" class="form-control" id="nomdepatient" >
+                </div>
+                <div class="col">
+                    <label for="nomedcin" class="form-label fw-semibold">Nom du médecin</label>
+                    <input type="text" class="form-control" id="nomedcin" >
+                </div>
+                <div class="col">
+                    <label for="email" class="form-label fw-semibold">Email</label>
+                    <input type="email" class="form-control" id="email" >
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <div class="col">
+                    <label for="numf" class="form-label fw-semibold">Numéro de téléphone</label>
+                    <input type="number" class="form-control" id="numf" >
+                </div>
+                <div class="col">
+                    <label class="form-label fw-semibold">Choisir un médecin</label>
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Choisir un médecin</option>
+                        <option value="1">Médecin 1</option>
+                        <option value="2">Médecin 2</option>
+                        <option value="3">Médecin 3</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="Symps" class="form-label fw-semibold">Symptômes</label>
+                    <input type="text" class="form-control" id="Symps" >
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <div class="col">
+                    <label for="date" class="form-label fw-semibold"> Choisir une date</label>
+                    <input type="date" class="form-control" id="date" >
+                </div>
+                <div class="col">
+                    <label for="heure" class="form-label fw-semibold"> Choisir une heure</label>
+                    <input type="time" class="form-control" id="heure" >
+                </div>
+            </div>
+            <div class="">
+                <button class="btn btn-info text-white w-100" type="button" onclick="reserveAppointment()">Réserver maintenant</button>
+            </div>
+        </form>
+    </div>
+</section>
+<section class="container py-5">
+    <div class="row">
+        <div class="col">
+            <img class="img-fluid rounded-3" src="{% static 'images/about.jpg' %}" alt="About">
+        </div>
+        <div class="col-7 d-flex justify-content-center flex-column ms-5">
+            <h2 class="fw-semibold fs-1">À propos de <span class="text-info">l'hôpital</span></h2>
+            <p class="fs-5 text-dark-emphasis">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Doloremque ea earum fugiat maxime praesentium qui recusandae soluta suscipit voluptas.
+                Adipisci distinctio dolor dolorum modi officia perspiciatis ratione sint vel voluptatem..</p>
+            <div>
+                <a href="#" class="btn btn-primary">En savoir plus</a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="container py-5">
+    <h2 class="text-center fw-semibold fs-1">Traitement <span class="text-info">hospitalier</span></h2>
+    <div class="m-5 row d-flex justify-content-center align-items-center">
+        <div class="col mx-4">
+            <img class="w-25" src="{% static 'images/eye-exam.png' %}" alt="Eye Exam">
+            <h3>Soins néphrologues</h3>
+            <p>Altération sous une forme quelconque, par injection d'humour ou par des mots aléatoires qui ne semblent même pas légèrement sûrs qu'il n'y a rien</p>
+            <a class="text-info fs-5" href="#">En savoir plus</a>
+        </div>
+        <div class="col">
+            <img class="w-25" src="{% static 'images/syringe.png' %}" alt="Syringe">
+            <h3>Soins néphrologues</h3>
+            <p>Altération sous une forme quelconque, par injection d'humour ou par des mots aléatoires qui ne semblent même pas légèrement sûrs qu'il n'y a rien</p>
+            <a class="text-info fs-5" href="#">En savoir plus</a>
+        </div>
+        <div class="col">
+            <img class="w-25" src="{% static 'images/vaccine.png' %}" alt="Vaccine">
+            <h3>Soins néphrologues</h3>
+            <p>Altération sous une forme quelconque, par injection d'humour ou par des mots aléatoires qui ne semblent même pas légèrement sûrs qu'il n'y a rien</p>
+            <a class="text-info fs-5" href="#">En savoir plus</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,106 @@
+{% extends "pages/base.html" %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h2 class="text-center">Inscription</h2>
+    <div class="text-center mb-4">
+        <button class="btn btn-primary mx-2" id="patientBtn" onclick="showForm('patient')">Patient</button>
+    </div>
+
+    <div id="patientForm">
+        <h3 class="text-center">Formulaire Patient</h3>
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="patientNom" class="form-label">Nom</label>
+                <input type="text" class="form-control" id="patientNom" name="nom">
+                {% if patient_form.nom.errors %}
+                    <div class="text-danger">{{ patient_form.nom.errors }}</div>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                <label for="patientPrenom" class="form-label">Prénom</label>
+                <input type="text" class="form-control" id="patientPrenom" name="prenom">
+                {% if patient_form.prenom.errors %}
+                    <div class="text-danger">{{ patient_form.prenom.errors }}</div>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                <label for="patientDateNaissance" class="form-label">Date de naissance</label>
+                <input type="date" class="form-control" id="patientDateNaissance" name="dateNaissance">
+                {% if patient_form.dateNaissance.errors %}
+                    <div class="text-danger">{{ patient_form.dateNaissance.errors }}</div>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                <label for="patientAdresse" class="form-label">Adresse</label>
+                <input type="text" class="form-control" id="patientAdresse" name="adresse">
+                {% if patient_form.adresse.errors %}
+                    <div class="text-danger">{{ patient_form.adresse.errors }}</div>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                <label for="patientTelephone" class="form-label">Numéro de téléphone</label>
+                <input type="tel" class="form-control" id="patientTelephone" name="telephone">
+                {% if patient_form.telephone.errors %}
+                    <div class="text-danger">{{ patient_form.telephone.errors }}</div>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                <label for="patientEmail" class="form-label">Email</label>
+                <input type="email" class="form-control" id="patientEmail" name="email">
+                {% if patient_form.email.errors %}
+                    <div class="text-danger">{{ patient_form.email.errors }}</div>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                <label for="patientPassword" class="form-label">Mot de passe</label>
+                <div class="input-group">
+                    <input type="password" class="form-control" id="patientPassword" name="password">
+                    <button type="button" class="btn btn-outline-secondary" onclick="togglePasswordVisibility('patientPassword')">
+                        <i id="patientPasswordToggle" class="bi bi-eye"></i>
+                    </button>
+                </div>
+                {% if patient_form.password.errors %}
+                    <div class="text-danger">{{ patient_form.password.errors }}</div>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                <label for="patientPasswordConfirm" class="form-label">Confirmez le mot de passe</label>
+                <div class="input-group">
+                    <input type="password" class="form-control" id="patientPasswordConfirm" name="password2">
+                    <button type="button" class="btn btn-outline-secondary" onclick="togglePasswordVisibility('patientPasswordConfirm')">
+                        <i id="patientPasswordConfirmToggle" class="bi bi-eye"></i>
+                    </button>
+                </div>
+                {% if patient_form.password2.errors %}
+                    <div class="text-danger">{{ patient_form.password2.errors }}</div>
+                {% elif password_mismatch %}
+                    <div class="text-danger">Les mots de passe ne correspondent pas.</div>
+                {% endif %}
+            </div>
+            
+            <button type="submit" class="btn btn-primary" name="patient">Inscription</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function togglePasswordVisibility(inputId) {
+        var passwordInput = document.getElementById(inputId);
+        var toggleButton = document.getElementById(inputId + 'Toggle');
+
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            toggleButton.classList.remove('bi-eye');
+            toggleButton.classList.add('bi-eye-slash');
+        } else {
+            passwordInput.type = 'password';
+            toggleButton.classList.remove('bi-eye-slash');
+            toggleButton.classList.add('bi-eye');
+        }
+    }
+</script>
+{% endblock %}

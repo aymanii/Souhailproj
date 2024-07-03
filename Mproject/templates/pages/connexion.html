@@ -1,0 +1,70 @@
+{% extends 'pages/base.html' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="text-center">Connexion</h2>
+            <div class="d-flex justify-content-between mb-3">
+                <button type="button" class="btn btn-primary flex-grow-1 me-2" onclick="showPatientForm()">Patient</button>
+                <button type="button" class="btn btn-secondary flex-grow-1 ms-2" onclick="showDoctorForm()">Médecin</button>
+            </div>
+            <form method="post" id="login-form">
+                {% csrf_token %}
+                <div class="mb-3" id="email-field" style="display: none;">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" disabled>
+                </div>
+                <div class="mb-3" id="password-field" style="display: none;">
+                    <label for="password" class="form-label">Mot de passe</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                </div>
+                <div class="mb-3" id="license-field" style="display: none;">
+                    <label for="license_number" class="form-label">Numéro de licence</label>
+                    <input type="text" class="form-control" id="license_number" name="license_number">
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Connexion</button>
+                {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showPatientForm() {
+        document.getElementById('email-field').style.display = 'block';
+        document.getElementById('email').setAttribute('required', 'required');
+        
+        document.getElementById('password-field').style.display = 'block';
+        document.getElementById('password').setAttribute('required', 'required');
+        
+        document.getElementById('license-field').style.display = 'none';
+        document.getElementById('license_number').removeAttribute('required');
+        document.getElementById('email').toggleAttribute('disabled');
+        
+        document.getElementById('login-form').action = "";
+    }
+
+    function showDoctorForm() {
+        document.getElementById('email-field').style.display = 'none';
+        document.getElementById('email').removeAttribute('required');
+        
+        document.getElementById('password-field').style.display = 'none';
+        document.getElementById('password').removeAttribute('required');
+        
+        document.getElementById('license-field').style.display = 'block';
+        document.getElementById('license_number').setAttribute('required', 'required');
+        document.getElementById('email').toggleAttribute('disabled');
+
+        document.getElementById('login-form').action = "{% url 'doctor_login' %}";
+    }
+</script>
+{% endblock %}
